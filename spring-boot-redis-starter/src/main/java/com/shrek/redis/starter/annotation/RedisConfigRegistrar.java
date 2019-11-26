@@ -19,7 +19,7 @@ import org.springframework.core.type.AnnotationMetadata;
 /**
  * redis 配置初始化
  * spring  类继承ImportBeanDefinitionRegistrar , BeanFactoryAware
- * @author niuzhiwei
+ * @author 吴署
  */
 public class RedisConfigRegistrar implements ImportBeanDefinitionRegistrar , BeanFactoryAware{
 

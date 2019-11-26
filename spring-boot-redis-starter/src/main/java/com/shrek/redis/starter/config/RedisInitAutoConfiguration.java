@@ -36,7 +36,7 @@ public class RedisInitAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(ShrekRedisTemplate.class)
-    public ShrekRedisTemplate easyRedisTemplate() {
+    public ShrekRedisTemplate shrekRedisTemplate() {
 
         return new ShrekRedisTemplate();
     }
