@@ -7,6 +7,7 @@ import com.shrek.redis.starter.core.RedisEnvironment;
 import com.shrek.redis.starter.properties.RedisProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanInitializationException;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.*;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -53,6 +54,10 @@ public class RedisConnectionFactoryUtil {
                 .getBean(RedisAdapter.class)
                 .getRedisMode();
 
+        /**
+         * 连接池配置信息
+         * @return
+         */
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         poolConfig.setMaxTotal(redisProperties.getMaxActive());
         poolConfig.setMaxIdle(redisProperties.getMaxIdle());
@@ -74,6 +79,7 @@ public class RedisConnectionFactoryUtil {
         //redis连接工厂
         JedisConnectionFactory jedisConnectionFactory;
 
+        //根据启动项配置的信息，初始化不同的redis客户端配置
         switch (redisMode) {
             case RedisModeConstants.REDIS_SINGLE:
                 RedisStandaloneConfiguration singleRedisConfig = RedisConnectionFactoryUtil

@@ -655,6 +655,7 @@ public class RedisSingleProcessor extends AbstractRedisProcessor {
 
     @Override
     public void close() {
-        jedis.close();
+        //把这里注释掉了，不然会有问题
+//        jedis.close();
     }
 }
